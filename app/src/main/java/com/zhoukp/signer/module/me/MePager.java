@@ -154,8 +154,8 @@ public class MePager extends BaseFragment implements View.OnClickListener, MePag
             tvID.setText(userBean.getUserCollege());
             tvID.setText(userBean.getUserNo().toString());
             tvClass.setText(userBean.getUserGrade() + userBean.getUserClass());
-            if (userBean.getUserHead() != null ) {
-                this.path = Constant.BaseUrl + userBean.getUserHead();
+            if (userBean.getUserHead() != null) {
+                this.path = userBean.getUserHead();
                 RxImageLoader.with(context).load(path).into(ivHead);
             }
         }
@@ -198,6 +198,9 @@ public class MePager extends BaseFragment implements View.OnClickListener, MePag
     public void uploadHeadIconSuccess(UploadHeadIconBean data) {
         ToastUtil.showToast(context, "上传头像成功");
         this.path = Constant.BaseUrl + data.getData();
+        LoginBean.UserBean user = UserUtil.getInstance().getUser();
+        user.setUserHead(path);
+        UserUtil.getInstance().setUser(user);
         RxImageLoader.with(context).load(path).into(ivHead);
     }
 

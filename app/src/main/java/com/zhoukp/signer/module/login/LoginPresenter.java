@@ -48,7 +48,9 @@ public class LoginPresenter {
                     public void onSuccess(LoginBean loginBean) {
                         Log.e("zkp", loginBean.getStatus() + "");
                         if (loginBean.getStatus() == Constant.SUCCESS_CODE) {
-                            UserUtil.getInstance().setUser(loginBean.getData());
+                            LoginBean.UserBean userBean = loginBean.getData();
+                            userBean.setUserHead(Constant.BaseUrl + userBean.getUserHead());
+                            UserUtil.getInstance().setUser(userBean);
                             loginView.loginSuccess(loginBean);
                         } else {
                             loginView.loginError(loginBean.getStatus());

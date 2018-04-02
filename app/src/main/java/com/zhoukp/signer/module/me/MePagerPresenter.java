@@ -119,8 +119,8 @@ public class MePagerPresenter {
 
                         Log.e("zkp", "uploadHeadIcon==" + data.getStatus());
                         if (data.getStatus() == Constant.SUCCESS_CODE) {
-                            mePagerView.refreshHeadIcon(Constant.BaseUrl + data.getData());
                             mePagerView.uploadHeadIconSuccess(data);
+                            mePagerView.refreshHeadIcon(Constant.BaseUrl + data.getData());
                         } else {
                             mePagerView.uploadHeadIconError(data.getStatus());
                         }
