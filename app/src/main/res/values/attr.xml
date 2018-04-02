@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PaletteImageView">
+        <attr name="paletteRadius" format="dimension" />
+        <attr name="paletteSrc" format="reference" />
+        <attr name="palettePadding" format="dimension" />
+        <attr name="paletteOffsetX" format="dimension" />
+        <attr name="paletteOffsetY" format="dimension" />
+        <attr name="paletteShadowRadius" format="dimension" />
+
+    </declare-styleable>
+
+    <declare-styleable name="RoundRectImageView">
+        <attr name="ImageViewStyle" format="string">
+            <enum name="RoundImageView" value="1" />
+            <enum name="RoundRectImageView" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>
