@@ -47,7 +47,7 @@ public class MainPresenter {
                         @Override
                         public void onSuccess(UpdateBean data) {
                             Log.e("zkp", "getUpdateInfo==" + data.getStatus());
-                            if (data.getStatus() == 200) {
+                            if (data.getStatus() == Constant.SUCCESS_CODE) {
                                 mainView.getUpdateInfoSuccess(data);
                             } else {
                                 mainView.getUpdateInfoError(data.getStatus());
@@ -58,7 +58,7 @@ public class MainPresenter {
 
                         @Override
                         public void onFail() {
-                            mainView.getUpdateInfoError(100);
+                            mainView.getUpdateInfoError(-1);
                             mainView.hideLoadingView();
                         }
                     });
@@ -119,7 +119,7 @@ public class MainPresenter {
         mainView.showLoadingView();
 
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("logcat", file.getName(),
+                .addFormDataPart("file", file.getName(),
                         RequestBody.create(MediaType.parse("application/otcet-stream"), file))
                 .build();
         //将错误日志上传到服务器
@@ -128,7 +128,7 @@ public class MainPresenter {
                     @Override
                     public void onSuccess(SponsorSignBean data) {
                         Log.e("zkp", "uploadCrashLogcat==" + data.getStatus());
-                        if (data.getStatus() == 200) {
+                        if (data.getStatus() == Constant.SUCCESS_CODE) {
                             //上传错误日志成功
                             Log.e("zkp", "错误日志上传成功");
                             mainView.uploadCrashSuccess();

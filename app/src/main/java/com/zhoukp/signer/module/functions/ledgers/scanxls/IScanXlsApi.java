@@ -20,13 +20,13 @@ public interface IScanXlsApi {
     /**
      * 上传某个月份的第二台账文件
      *
-     * @param month 月份
+     * @param userId 月份
      * @param body  body
      * @return
      */
-    @POST("UploadLedger?")
+    @POST("uploadRecord?")
     Observable<SponsorSignBean> uploadLedger(
-            @Query("month") int month,
+            @Query("userId") int userId,
             @Body RequestBody body
     );
 }

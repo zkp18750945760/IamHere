@@ -20,7 +20,7 @@ public interface IMainApi {
      *
      * @return
      */
-    @POST("GetUpdateInfo?")
+    @POST("updateInfo?")
     Observable<UpdateBean> getUpdateInfo();
 
     /**
@@ -29,7 +29,7 @@ public interface IMainApi {
      * @param body RequestBody
      * @return
      */
-    @POST("UploadCrashLogcat?")
+    @POST("uploadCrash?")
     Observable<SponsorSignBean> uploadCrashLogcat(
             @Body RequestBody body
     );

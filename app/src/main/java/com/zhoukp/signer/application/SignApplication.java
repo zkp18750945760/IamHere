@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.zhoukp.signer.R;
+import com.zhoukp.signer.module.crash.CrashHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class SignApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //CrashHandler.getInstance().init(this);
+        CrashHandler.getInstance().init(this);
 
         String[] urls = getResources().getStringArray(R.array.banner);
         List<String> list = Arrays.asList(urls);

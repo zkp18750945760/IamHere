@@ -451,7 +451,7 @@ public class SignActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onBind(final Context context, int position, final SignEventsBean.DataBean data) {
             if (data.getWeek() != null) {
-                tvWeek.setText(data.getWeek());
+                tvWeek.setText(data.getWeek().toString());
             }
             tvTheme.setText(data.getContent());
             tvDate.setText(TimeUtils.getCurrentDate());

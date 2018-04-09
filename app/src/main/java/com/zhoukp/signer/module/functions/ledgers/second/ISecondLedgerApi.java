@@ -20,7 +20,7 @@ public interface ISecondLedgerApi {
      * @param year   年份
      * @return
      */
-    @POST("android_action?")
+    @POST("android_action?serviceNo=12")
     Observable<SecondLedgerBean> getSecondLedger(
             @Query("userId") Integer userId,
             @Query("year") int year

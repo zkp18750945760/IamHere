@@ -3,6 +3,7 @@ package com.zhoukp.signer.module.functions.ledgers.second;
 import android.util.Log;
 
 import com.zhoukp.signer.utils.BaseApi;
+import com.zhoukp.signer.utils.Constant;
 
 /**
  * @author zhoukp
@@ -38,7 +39,7 @@ public class SecondLedgerPresenter {
                     @Override
                     public void onSuccess(SecondLedgerBean data) {
                         Log.e("zkp", "getSecondLedger==" + data.getStatus());
-                        if (data.getStatus() == 200) {
+                        if (data.getStatus() == Constant.SUCCESS_CODE) {
                             secondLedgerView.getLedgerSuccess(data);
                         } else {
                             secondLedgerView.getLedgerError(data.getStatus());

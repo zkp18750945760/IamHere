@@ -7,7 +7,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import com.zhoukp.signer.module.functions.sign.SponsorSignBean;
+import com.zhoukp.signer.module.login.UserUtil;
 import com.zhoukp.signer.utils.BaseApi;
+import com.zhoukp.signer.utils.Constant;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -143,16 +145,16 @@ public class ScanXlsPrestener {
         scanXlsView.showDialog();
         File file = new File(xls);
         RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("xls", file.getName(), RequestBody.create(MediaType.parse("application/otcet-stream"), file))
+                .addFormDataPart("file", file.getName(), RequestBody.create(MediaType.parse("application/otcet-stream"), file))
                 .build();
 
-        BaseApi.request(BaseApi.createApi(IScanXlsApi.class).uploadLedger(month, requestBody),
+        BaseApi.request(BaseApi.createApi(IScanXlsApi.class).uploadLedger(UserUtil.getInstance().getUser().getUserId(), requestBody),
                 new BaseApi.IResponseListener<SponsorSignBean>() {
                     @Override
                     public void onSuccess(SponsorSignBean data) {
                         Log.e("zkp", "uploadLedger==" + data.getStatus());
 
-                        if (data.getStatus() == 200) {
+                        if (data.getStatus() == Constant.SUCCESS_CODE) {
                             //上传文件成功
                             scanXlsView.uploadSuccess();
                         } else {

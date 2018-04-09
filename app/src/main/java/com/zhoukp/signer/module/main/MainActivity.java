@@ -111,12 +111,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         baseFragments.add(new ActivityPager());
         baseFragments.add(new MePager());
 
-        /*if (presenter == null) {
+        if (presenter == null) {
             presenter = new MainPresenter();
             presenter.attachView(this);
             presenter.getCrashFile(Constant.appCrashPath, ".log", true);
             presenter.getUpdateInfo();
-        }*/
+        }
     }
 
     @Override
